@@ -4,6 +4,23 @@ int divmode = 0;
 int equals = 0;
 float diva;
 QString first;
+double Sqrt(double x) {
+	if (x <= 0)
+		return nan("");
+	int exp = 0;
+	x = frexp(x, &exp);
+	if (exp & 1) {
+		exp--;
+		x *= 2;
+	}
+	double y = (1 + x) / 2;
+	double z = 0;
+	while (y != z) {
+		z = y;
+		y = (y + x / y) / 2;
+	}
+	return ldexp(y, exp / 2);
+}
 Kalkulator::Kalkulator(QWidget* parent)
 	: QMainWindow(parent)
 {
@@ -151,7 +168,7 @@ void Kalkulator::sendnum(QString num) {
 }
 void Kalkulator::arythmetic(int i) {
 	if (i == 5) {
-		ui.screen->setText(QString::number((double)(sqrt(ui.screen->text().toDouble()))));
+		ui.screen->setText(QString::number((double)(Sqrt(ui.screen->text().toDouble()))));
 		return;
 		::equals = 1;
 	}

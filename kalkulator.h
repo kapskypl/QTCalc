@@ -4,7 +4,6 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include "ui_kalkulator.h"
-#include <cmath>
 class Kalkulator : public QMainWindow
 {
 	Q_OBJECT
