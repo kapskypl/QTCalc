@@ -45,6 +45,7 @@ public:
     QPushButton *backspace;
     QPushButton *ac;
     QLineEdit *arythm;
+    QPushButton *plusminus;
 
     void setupUi(QMainWindow *KalkulatorClass)
     {
@@ -130,7 +131,7 @@ public:
         percent->setGeometry(QRect(350, 110, 31, 31));
         backspace = new QPushButton(centralWidget);
         backspace->setObjectName(QString::fromUtf8("backspace"));
-        backspace->setGeometry(QRect(210, 70, 171, 31));
+        backspace->setGeometry(QRect(210, 70, 91, 31));
         ac = new QPushButton(centralWidget);
         ac->setObjectName(QString::fromUtf8("ac"));
         ac->setGeometry(QRect(10, 70, 191, 31));
@@ -140,6 +141,9 @@ public:
         arythm->setStyleSheet(QString::fromUtf8("background-color: grey; border: 0; color: white;"));
         arythm->setAlignment(Qt::AlignCenter);
         arythm->setReadOnly(true);
+        plusminus = new QPushButton(centralWidget);
+        plusminus->setObjectName(QString::fromUtf8("plusminus"));
+        plusminus->setGeometry(QRect(310, 70, 71, 31));
         KalkulatorClass->setCentralWidget(centralWidget);
 
         retranslateUi(KalkulatorClass);
@@ -172,6 +176,7 @@ public:
         percent->setText(QApplication::translate("KalkulatorClass", "%", nullptr));
         backspace->setText(QApplication::translate("KalkulatorClass", "<-", nullptr));
         ac->setText(QApplication::translate("KalkulatorClass", "AC", nullptr));
+        plusminus->setText(QApplication::translate("KalkulatorClass", "+/-", nullptr));
     } // retranslateUi
 
 };
