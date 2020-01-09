@@ -104,9 +104,11 @@ void Kalkulator::equals(QString first, QString second, int arythm) {
 	if (answ.contains(".") || answ.contains("-")) {
 		ui.screen->setMaxLength(10);
 	}
-	ui.screen->setText(answ);
-	::equals = 1;
-	ui.arythm->setText("");
+	if (answ != "") {
+		ui.screen->setText(answ);
+		::equals = 1;
+		ui.arythm->setText("");
+	}
 }
 
 void Kalkulator::keyPressEvent(QKeyEvent* event) {
@@ -209,6 +211,9 @@ void Kalkulator::dot() {
 	ui.screen->setText(ui.screen->text() + ".");
 }
 void Kalkulator::bckspc() {
+	if (::equals == 1) {
+		ac();
+	}
 	if (ui.screen->text() == "0") return;
 	if (ui.screen->text() == "nan") ui.screen->setText("0");
 	std::string a = ui.screen->text().toStdString();
